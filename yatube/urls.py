@@ -20,6 +20,8 @@ urlpatterns = [
         # обработчик для главной страницы ищем в urls.py приложения posts
         path("", include("posts.urls")),
 
+        path("", include("users.urls")),
+
         # регистрация и авторизация
         path("auth/", include("users.urls")),
 
@@ -30,7 +32,6 @@ urlpatterns = [
         # раздел администратора
         path("admin/", admin.site.urls),
 
-        #раздел добавления публикации
-        path("", include("users.urls"))
+        
         
 ]
