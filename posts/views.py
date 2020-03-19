@@ -1,9 +1,9 @@
+import datetime
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from .models import Post, Group, User
 from .forms import PostForm
-import datetime
-from django.shortcuts import redirect
 
 
 def index(request):
@@ -25,6 +25,7 @@ def new_post(request):
                 form = PostForm(request.POST)
                 if form.is_valid():
                         Post.objects.create(author=request.user, text=form.cleaned_data['text'], group = form.cleaned_data['group'])
-                        return redirect("/") 
+                        # Под name space вы имеете ввиду имена шаблонов?
+                        return redirect('index') 
         form = PostForm()
         return render(request,'new.html',{'form':form})
